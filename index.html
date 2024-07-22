@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roman Hindi Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+        input[type="text"] {
+            padding: 0.5rem;
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+        p {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Roman Hindi Converter</h1>
+    </header>
+    <div class="content">
+        <input type="text" id="userInput" placeholder="Enter Hindi text here">
+        <button onclick="convertToRomanHindi()">Convert</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function convertToRomanHindi() {
+            const input = document.getElementById('userInput').value;
+            const romanized = toRomanHindi(input);
+            const result = romanized.replace(/ /g, '-');
+            document.getElementById('result').textContent = result;
+        }
+
+        function toRomanHindi(hindiText) {
+            // Simple mapping for demo purposes. For full conversion, a comprehensive mapping would be needed.
+            const map = {
+                'अ': 'a', 'आ': 'aa', 'इ': 'i', 'ई': 'ee', 'उ': 'u', 'ऊ': 'oo',
+                'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au', 'क': 'k', 'ख': 'kh',
+                'ग': 'g', 'घ': 'gh', 'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh',
+                'ट': 't', 'ठ': 'th', 'ड': 'd', 'ढ': 'dh', 'ण': 'n', 'त': 't',
+                'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n', 'प': 'p', 'फ': 'ph',
+                'ब': 'b', 'भ': 'bh', 'म': 'm', 'य': 'y', 'र': 'r', 'ल': 'l',
+                'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's', 'ह': 'h',
+                'ा': 'a', 'ि': 'i', 'ी': 'ee', 'ु': 'u', 'ू': 'oo', 'े': 'e',
+                'ै': 'ai', 'ो': 'o', 'ौ': 'au', 'ं': 'n', 'ः': 'h'
+            };
+
+            return hindiText.split('').map(char => map[char] || char).join('');
+        }
+    </script>
+</body>
+</html>
